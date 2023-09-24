@@ -15,6 +15,10 @@
         },
         {
           "use": "npm",
+          "src": "swagger-ui-express"
+        },
+        {
+          "use": "npm",
           "src": "swagger-jsdoc"
         }
     ],

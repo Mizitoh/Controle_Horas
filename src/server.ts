@@ -6,7 +6,7 @@ import swaggerSpec from "./services/swaggerConfig";
 const cors = require('cors');
 const app = express();
 
-const options = { customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.3/swagger-ui.css' };
+const options = { customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.css' };
 
 app.use(cors());
 app.use(express.json());

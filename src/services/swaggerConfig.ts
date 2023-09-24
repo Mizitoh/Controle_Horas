@@ -96,6 +96,9 @@ const definition: any = {
           required: true,
           content: {
             'application/json': {
+              example: {
+                grupo: 'Nome do Grupo',
+              },
               schema: {
                 $ref: '#/components/schemas/Grupo',
               },
@@ -108,9 +111,7 @@ const definition: any = {
             content: {
               'application/json': {
                 example: {
-                  id: 1, // ID do grupo recém-criado
-                  nome: 'Nome do Grupo',
-                  // Outras propriedades do grupo
+                  grupo: 'Nome do Grupo',
                 },
               },
             },

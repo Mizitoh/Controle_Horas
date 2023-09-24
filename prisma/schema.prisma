@@ -31,11 +31,12 @@ model Usuario {
 }
 
 model ControleHoras {
-  id         Int      @id @default(autoincrement())
-  usuario    Usuario  @relation(fields: [id_usuario], references: [id])
-  id_usuario Int
-  data       DateTime @db.Date
-  hora       DateTime @db.Time(6)
+  id          Int      @id @default(autoincrement())
+  usuario     Usuario  @relation(fields: [id_usuario], references: [id])
+  id_usuario  Int
+  data        DateTime @db.Date
+  horaInicial DateTime @db.Time(6)
+  horaFinal   DateTime @db.Time(6)
 
   @@map("controle_horas")
 }

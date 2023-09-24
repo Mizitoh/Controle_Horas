@@ -21,6 +21,10 @@
     "routes": [
         {
             "src": "/api-docs",
+            "dest": "/src/swagger-ui"
+          },
+        {
+            "src": "/api-docs",
             "dest": "src/server.ts"
         },
         {

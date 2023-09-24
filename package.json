@@ -6,9 +6,9 @@
   "scripts": {
     "start:dev": "nodemon",
     "docs": "swagger-jsdoc",
+    "vercel-build": "npx prisma migrate deploy",
     "postinstall": "prisma generate",
-    "build": "prisma generate && next build",
-    "vercel-build": "npx prisma migrate deploy"
+    "build": "prisma generate && next build"
   },
   "keywords": [],
   "author": "",

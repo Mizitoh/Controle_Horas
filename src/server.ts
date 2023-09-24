@@ -5,10 +5,12 @@ import swaggerSpec from "./services/swaggerConfig";
 
 const cors = require('cors');
 const app = express();
+const CSS_URL =
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 
 app.use(cors());
 app.use(express.json());
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec, { customCssUrl: CSS_URL }));
 app.use(router);
 
 app.get('/', (request, response) => {

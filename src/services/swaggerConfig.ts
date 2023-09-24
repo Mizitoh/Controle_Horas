@@ -437,8 +437,8 @@ const definition: any = {
               example: {
                 id_usuario: 1,
                 data: "2023-09-25",
-                horaInicial: "14:30:00.000Z",
-                horaFinal: "13:30:00.000Z"
+                horaInicial: "14:30",
+                horaFinal: "15:30"
               },
               schema: {
                 $ref: '#/components/schemas/ControleHoras',

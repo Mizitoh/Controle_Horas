@@ -5,8 +5,8 @@ export class HorasController {
     async salvar(req: Request, res: Response) {
         const horas = req.body;
         const dataAjustada = horas.data ? new Date(horas.data).toISOString() : new Date().toISOString();
-        const horaAjustadaInicial = horas.horaInicial ? `1970-01-01T${horas.hora}:00.000Z` : `1970-01-01T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z`;
-        const horaAjustadaFinal = horas.horaFinal ? `1970-01-01T${horas.hora}:00.000Z` : `1970-01-01T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z`;
+        const horaAjustadaInicial = horas.horaInicial ? `1970-01-01T${horas.horaInicial}:00.000Z` : `1970-01-01T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z`;
+        const horaAjustadaFinal = horas.horaFinal ? `1970-01-01T${horas.horaFinal}:00.000Z` : `1970-01-01T${new Date().getHours()}:${new Date().getMinutes()}:00.000Z`;
 
         try {
             const salvarHora = await prismaClient.controleHoras.create({

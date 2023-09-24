@@ -57,7 +57,11 @@ const definition: any = {
             type: 'string',
             format: 'date',
           },
-          hora: {
+          horaInicial: {
+            type: 'string',
+            format: 'time',
+          },
+          horaFinal: {
             type: 'string',
             format: 'time',
           },
@@ -433,7 +437,8 @@ const definition: any = {
               example: {
                 id_usuario: 1,
                 data: "2023-09-25",
-                hora: "14:30:00.000Z",
+                horaInicial: "14:30:00.000Z",
+                horaFinal: "13:30:00.000Z"
               },
               schema: {
                 $ref: '#/components/schemas/ControleHoras',

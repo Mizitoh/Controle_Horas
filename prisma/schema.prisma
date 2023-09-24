@@ -35,8 +35,8 @@ model ControleHoras {
   usuario     Usuario  @relation(fields: [id_usuario], references: [id])
   id_usuario  Int
   data        DateTime @db.Date
-  horaInicial DateTime @db.Time(6)
-  horaFinal   DateTime @db.Time(6)
+  horaInicial DateTime @db.Time(6) @default("1970-01-01T12:00:00.000Z")
+  horaFinal   DateTime @db.Time(6) @default("1970-01-01T12:00:00.000Z")
 
   @@map("controle_horas")
 }

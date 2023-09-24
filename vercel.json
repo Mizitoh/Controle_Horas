@@ -12,6 +12,10 @@
         {
             "use": "npm",
             "src": "prisma:generate"
+        },
+        {
+          "use": "npm",
+          "src": "swagger-jsdoc"
         }
     ],
     "routes": [

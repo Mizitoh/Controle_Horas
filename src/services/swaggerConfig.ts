@@ -75,7 +75,7 @@ const definition: any = {
           '200': {
             description: 'OK',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 schema: {
                   type: 'array',
                   items: {
@@ -95,7 +95,7 @@ const definition: any = {
           description: 'Dados do grupo a ser criado',
           required: true,
           content: {
-            'Content-Type: text/html; charset=utf-8': {
+            'application/json': {
               schema: {
                 $ref: '#/components/schemas/Grupo',
               },
@@ -106,7 +106,7 @@ const definition: any = {
           201: {
             description: 'Grupo criado com sucesso.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   id: 1, // ID do grupo recém-criado
                   nome: 'Nome do Grupo',
@@ -118,7 +118,7 @@ const definition: any = {
           400: {
             description: 'Requisição inválida. Verifique os dados enviados.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   error: 'Descrição do erro',
                 },
@@ -128,7 +128,7 @@ const definition: any = {
           500: {
             description: 'Erro interno do servidor. Entre em contato com o suporte.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   error: 'Descrição do erro',
                 },
@@ -182,7 +182,7 @@ const definition: any = {
           description: 'Dados do grupo a ser atualizado',
           required: true,
           content: {
-            'Content-Type: text/html; charset=utf-8': {
+            'application/json': {
               schema: {
                 $ref: '#/components/schemas/Grupo',
               },
@@ -193,7 +193,7 @@ const definition: any = {
           200: {
             description: 'Grupo atualizado com sucesso.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   id: 1, // ID do grupo atualizado
                   nome: 'Nome do Grupo Atualizado',
@@ -220,7 +220,7 @@ const definition: any = {
           '200': {
             description: 'OK',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 schema: {
                   type: 'array',
                   items: {
@@ -240,7 +240,7 @@ const definition: any = {
           description: 'Dados do usuário a ser criado',
           required: true,
           content: {
-            'Content-Type: text/html; charset=utf-8': {
+            'application/json': {
               example: {
                 nome: "Meu nome",
                 grupo_id: 1,
@@ -257,7 +257,7 @@ const definition: any = {
           201: {
             description: 'Usuário criado com sucesso.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   nome: "Meu nome",
                   grupo_id: 1,
@@ -270,7 +270,7 @@ const definition: any = {
           400: {
             description: 'Requisição inválida. Verifique os dados enviados.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   error: 'Descrição do erro',
                 },
@@ -280,7 +280,7 @@ const definition: any = {
           500: {
             description: 'Erro interno do servidor. Entre em contato com o suporte.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   error: 'Descrição do erro',
                 },
@@ -297,7 +297,7 @@ const definition: any = {
           description: 'Dados do usuário para atualizar a senha',
           required: true,
           content: {
-            'Content-Type: text/html; charset=utf-8': {
+            'application/json': {
               example: {
                 email: "email@bonitao.com",
                 senha: "S3Cr3T#",
@@ -312,7 +312,7 @@ const definition: any = {
           200: {
             description: 'Senha atualizada com sucesso.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   email: "email@bonitao.com"
                 },
@@ -337,7 +337,7 @@ const definition: any = {
           description: 'Dados do usuário',
           required: true,
           content: {
-            'Content-Type: text/html; charset=utf-8': {
+            'application/json': {
               example: {
                 email: "email@bonitao.com",
                 senha: 'S3Cr3T#',
@@ -352,7 +352,7 @@ const definition: any = {
           200: {
             description: 'Login com sucesso.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   email: "email@bonitao.com",
                   senha: 'S3Cr3T#',
@@ -363,7 +363,7 @@ const definition: any = {
           400: {
             description: 'Login não realizado! verifique senha e email.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   error: 'Descrição do erro',
                 },
@@ -408,7 +408,7 @@ const definition: any = {
           '200': {
             description: 'OK',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 schema: {
                   type: 'array',
                   items: {
@@ -428,7 +428,7 @@ const definition: any = {
           description: 'Dados do apontamento',
           required: true,
           content: {
-            'Content-Type: text/html; charset=utf-8': {
+            'application/json': {
               example: {
                 id_usuario: 1,
                 data: "2023-09-25",
@@ -451,7 +451,7 @@ const definition: any = {
           400: {
             description: 'Não foi possível cadastrar os dados! - 400 bad request.',
             content: {
-              'Content-Type: text/html; charset=utf-8': {
+              'application/json': {
                 example: {
                   error: 'Descrição do erro',
                 },
@@ -482,7 +482,7 @@ const definition: any = {
             '200': {
               description: 'OK',
               content: {
-                'Content-Type: text/html; charset=utf-8': {
+                'application/json': {
                   schema: {
                     type: 'array',
                     items: {

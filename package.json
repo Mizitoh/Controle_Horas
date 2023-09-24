@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon",
-    "prisma:generate": "prisma generate",
-    "build": "npm run prisma:generate && next build",
+    "postinstall": "prisma generate",
+    "build": "prisma generate && next build",
     "vercel-build": "npx prisma migrate deploy"
   },
   "keywords": [],

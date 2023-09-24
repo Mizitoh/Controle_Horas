@@ -1,14 +1,27 @@
 {
     "version": 2,
     "builds": [
-        { "src": "/*.html", "use": "@vercel/static" },
-        { "src": "src/server.ts", "use": "@vercel/node" },
-        { "use": "npm", "src": "prisma:generate" }
+        {
+            "src": "/*.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "src/server.ts",
+            "use": "@vercel/node"
+        },
+        {
+            "use": "npm",
+            "src": "prisma:generate"
+        }
     ],
     "routes": [
         {
-          "src": "/(.*)",
-          "dest": "src/server.ts"
+            "src": "/api-docs",
+            "dest": "src/server.ts"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "src/server.ts"
         }
-      ]
+    ]
 }

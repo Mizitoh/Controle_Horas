@@ -533,8 +533,12 @@ const definition: any = {
 };
 
 const apis = ['./src/router.ts'];
+const options = {
+  customCss: '.swagger-ui .topbar { display: none }'
+}
 
 export default swaggerJSDoc({
   definition,
   apis,
+  options
 });

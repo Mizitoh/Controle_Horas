@@ -359,8 +359,10 @@ const definition: any = {
             content: {
               'application/json': {
                 example: {
+                  status: 200,
+                  mensagem: "Login realizado com sucesso!",
                   email: "email@bonitao.com",
-                  senha: 'S3Cr3T#',
+                  id_usuario: 1,
                 },
               },
             },

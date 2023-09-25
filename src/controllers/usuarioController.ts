@@ -98,6 +98,7 @@ export class UsuarioController {
                     status: 200,
                     mensagem: "Login realizado com sucesso!",
                     email: verificaUsuarioExistente.email,
+                    id_usuario: verificaUsuarioExistente.id
                     //token: token,
                 });
             } else {

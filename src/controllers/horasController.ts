@@ -36,7 +36,7 @@ export class HorasController {
     async carregarPorUsuario(req: Request, res: Response) {
         const usuario = parseInt(req.params.id_usuario);
         try {
-            const listarTodos = await prismaClient.$queryRaw`SELECT id, id_usuario, data, hora FROM controle_horas WHERE id_usuario = ${usuario}`;
+            const listarTodos = await prismaClient.$queryRaw`SELECT id, id_usuario, data, "horaInicial", "horaFinal" FROM controle_horas WHERE id_usuario = ${usuario}`;
             return res.json(listarTodos);
         } catch (error) {
             return res.status(400).send("Erro ao carregar consulta!\n" + error);

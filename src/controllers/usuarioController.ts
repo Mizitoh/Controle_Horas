@@ -76,6 +76,25 @@ export class UsuarioController {
         }
     }
 
+    async carregarPOrId(req: Request, res: Response) {
+        try {
+            const id = parseInt(req.params.id);
+
+            const usuario = await prismaClient.usuario.findFirst({
+                where: {
+                    id: id,
+                }
+            });
+
+            return res.status(200).json({
+                email: usuario?.email,
+                nome: usuario?.nome
+            })
+        } catch (error) {
+            return res.status(400).send({ status: 400, mensagem: "Erro ao carregar registro - 400 bad request", error });
+        }
+    }
+
     async login(req: Request, res: Response) {
         try {
             const { senha, email } = req.body;

@@ -15,6 +15,7 @@ router.get("/grupo", grupoController.carregar)
 const usuarioController = new UsuarioController();
 
     router.get("/usuario", usuarioController.carregar)
+    .get("/usuario/:id", usuarioController.carregarPOrId)
     .post("/usuario", usuarioController.salvar)
     .put("/usuario", usuarioController.atualizar)
     .delete("/usuario/:id", usuarioController.apagar)

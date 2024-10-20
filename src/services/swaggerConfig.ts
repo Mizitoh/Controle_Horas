@@ -31,15 +31,24 @@ const definition: any = {
           nome: {
             type: 'string',
           },
-          grupo_id: {
-            type: 'integer',
-          },
           email: {
             type: 'string',
             format: 'email',
           },
           senha: {
             type: 'string',
+          },
+        },
+      },
+      // UsuarioGrupo
+      Usuario_Grupo: {
+        type: 'object',
+        properties: {
+          usuario_id: {
+            type: 'integer',
+          },
+          grupo_id: {
+            type: 'integer',
           },
         },
       },
@@ -51,6 +60,9 @@ const definition: any = {
             type: 'integer',
           },
           id_usuario: {
+            type: 'integer',
+          },
+          id_grupo: {
             type: 'integer',
           },
           data: {
@@ -510,6 +522,51 @@ const definition: any = {
         },
       },
     },
+    "/usuariogrupo/horas":{
+      get: {
+        "tags": ["Horas"],
+        summary: 'Carregar registro de horas por usuário e grupo',
+        description: 'Lista apontamentos do por id de usuário e id grupo',
+        requestBody: {
+          description: 'Dados do apontamento',
+          required: true,
+          content: {
+            'application/json': {
+              example: {
+                  usuario_id: 1,
+                  grupo_id: 1
+              },
+              schema: {
+                $ref: '#/components/schemas/ControleHoras',
+              },
+            },
+          },
+        },
+        responses: {
+          responses: {
+            '200': {
+              description: 'OK',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/ControleHoras',
+                    },
+                  },
+                },
+              },
+            },
+          },
+          404: {
+            description: 'Dados não encontrados.',
+          },
+          400: {
+            description: 'Erro ao carregar consulta!',
+          },
+        },
+      },
+    },
     '/apontar/{id}': {
       delete: {
         "tags": ["Horas"],
@@ -536,7 +593,97 @@ const definition: any = {
         },
       },
     },
+    // UsuarioGrupo
+    '/usuariogrupo': {
+      get: {
+        "tags": ["Grupo de Usuarios"],
+        summary: 'Carrega todos os registros de ids grupo vs usuarios',
+        responses: {
+          '200': {
+            description: 'OK',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'array',
+                  items: {
+                    $ref: '#/components/schemas/usuario_grupo',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      post: {
+        "tags": ["Grupo de Usuarios"],
+        summary: 'Criar um novo registro de Grupo de Usuarios',
+        description: 'Cria uma relação de Grupo de Usuarios',
+        requestBody: {
+          description: 'Dados do Grupo de Usuarios',
+          required: true,
+          content: {
+            'application/json': {
+              example: {
+                usuario_id: 1,
+                grupo_id: 1,
+              },
+              schema: {
+                $ref: '#/components/schemas/usuario_grupo',
+              },
+            },
+          },
+        },
+        responses: {
+          201: {
+            description: 'Grupo cadastrado com Sucesso!',
+            example: {
+              status: 201,
+              mensagem: "Grupo cadastrado com Sucesso! - 201 created."
+            },
+          },
+          400: {
+            description: 'Não foi possível cadastrar-se nesse grupo! - 400 bad request.',
+            content: {
+              'application/json': {
+                example: {
+                  error: 'Descrição do erro',
+                },
+              },
+            },
+          },
+        },
+      },
+      delete: {
+        "tags": ["Grupo de Usuarios"],
+        summary: 'Excluir um registro de Grupo de Usuarios',
+        description: 'Exclui um apontamento pelo body de id usuario e id grupo.',
+        requestBody: {
+          description: 'Dados do Grupo de Usuarios',
+          required: true,
+          content: {
+            'application/json': {
+              example: {
+                usuario_id: 1,
+                grupo_id: 1,
+              },
+              schema: {
+                $ref: '#/components/schemas/usuario_grupo',
+              },
+            },
+          },
+        },
+        responses: {
+          204: {
+            description: 'Excluído do grupo com sucesso!',
+          },
+          404: {
+            description: 'Erro ao tentar sair do grupo - 400 bad request',
+          },
+        },
+      },
+    },
   },
+  
   tryOut: true,
 };
 

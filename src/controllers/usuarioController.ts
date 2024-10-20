@@ -32,7 +32,6 @@ export class UsuarioController {
             const salvarUsuario = await prismaClient.usuario.create({
                 data: {
                     nome: usuario.nome,
-                    grupo_id: usuario.grupo_id,
                     email: usuario.email,
                     senha: senha,
                 },

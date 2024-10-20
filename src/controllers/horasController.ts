@@ -15,6 +15,7 @@ export class HorasController {
                     data: dataAjustada,
                     horaInicial: horaAjustadaInicial,
                     horaFinal: horaAjustadaFinal,
+                    id_grupo: horas.id_grupo,
                 },
             });
 
@@ -27,6 +28,17 @@ export class HorasController {
     async carregar(req: Request, res: Response) {
         try {
             const listarTodos = await prismaClient.controleHoras.findMany();
+            return res.json(listarTodos);
+        } catch (error) {
+            return res.status(400).send("Erro ao carregar consulta!\n" + error);
+        }
+    }
+
+    async carregarPorUsuarioGrupo(req: Request, res: Response) {
+        const usuario = req.body;
+        try {
+            const listarTodos = await prismaClient.$queryRaw`SELECT id, id_usuario, id_grupo, data, 
+            "horaInicial", "horaFinal" FROM controle_horas WHERE id_usuario = ${usuario.usuario_id} AND id_grupo = ${usuario.grupo_id}`;
             return res.json(listarTodos);
         } catch (error) {
             return res.status(400).send("Erro ao carregar consulta!\n" + error);

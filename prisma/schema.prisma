@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,9 +8,10 @@ datasource db {
 }
 
 model Grupo {
-  id      Int       @id @default(autoincrement())
-  nome    String    @unique
-  usuario Usuario[]
+  id             Int             @id @default(autoincrement())
+  nome           String          @unique
+  controle_horas ControleHoras[]
+  usuario_grupo  usuario_grupo[]
 
   @@map("grupo")
 }
@@ -21,22 +19,33 @@ model Grupo {
 model Usuario {
   id             Int             @id @default(autoincrement())
   nome           String
-  grupo          Grupo           @relation(fields: [grupo_id], references: [id])
-  grupo_id       Int
   email          String          @unique @db.VarChar(255)
   senha          String
   controle_horas ControleHoras[]
+  usuario_grupo  usuario_grupo[]
 
   @@map("usuario")
 }
 
 model ControleHoras {
   id          Int      @id @default(autoincrement())
-  usuario     Usuario  @relation(fields: [id_usuario], references: [id])
   id_usuario  Int
   data        DateTime @db.Date
-  horaInicial DateTime @db.Time(6) 
+  horaInicial DateTime @db.Time(6)
   horaFinal   DateTime @db.Time(6)
+  id_grupo    Int?
+  grupo       Grupo?   @relation(fields: [id_grupo], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  usuario     Usuario  @relation(fields: [id_usuario], references: [id])
 
   @@map("controle_horas")
+}
+
+model usuario_grupo {
+  usuario_id Int
+  grupo_id   Int
+  grupo      Grupo   @relation(fields: [grupo_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  usuario    Usuario @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([usuario_id, grupo_id])
+  @@map("usuario_grupo")
 }
